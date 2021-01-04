@@ -131,3 +131,6 @@ dmypy.json
 
 # output files
 output.csv
+
+# mac files
+.DS_Store
