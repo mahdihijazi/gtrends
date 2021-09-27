@@ -1,2 +1,2 @@
 # gtrends
-Goole Trends Analysis Helper
+Google Trends Analysis Helper
