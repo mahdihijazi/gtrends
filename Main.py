@@ -9,8 +9,8 @@ def write_csv_file(file_name, array):
         csvWriter = csv.writer(my_csv, delimiter=',')
         csvWriter.writerows(array)
 
-
-def get_search_interest_over_time(keyword_list, country_iso2, timeframe='today 5-y'):
+# get the data for the past 90 days
+def get_search_interest_over_time(keyword_list, country_iso2, timeframe='today 3-m'):
     from pytrends.request import TrendReq
     pytrend = TrendReq()
     pytrend.build_payload(keyword_list, cat=0, timeframe=timeframe, geo=country_iso2, gprop='')
@@ -26,11 +26,14 @@ def get_search_interest_over_time(keyword_list, country_iso2, timeframe='today 5
     avg = sum / scoresCount if (scoresCount != 0) else 0
     return avg
 
+def gtrends_hyper_link(geo, query, cell_value):
+    return f"=HYPERLINK(https://trends.google.com/trends/explore?geo={geo}&q={query}, {cell_value})"
 
-topics_list = ["good habits", "StrengthsFinder", "Getting Things Done", "برمجه"]
+
+topics_list = ["صناديق الريت", "صناديق المؤشرات المتداولة", "etf", "ناسداك"]
 
 
-# 1 raw for the header 7 one row for the total
+# 1 raw for the header & one row for the total
 lastRow = len(arabic_countries) + 2
 
 # set first column title

@@ -5,7 +5,10 @@ class Country:
 
 
 saudi_arabia = Country("Saudi Arabia", "SA")
+egypt = Country("Egypt", "EG")
+morocco = Country("Morocco", "MA")
 jordan = Country("Jordan", "JO")
-egypt = Country("Egype", "EG")
+algeria = Country("Algeria", "DZ")
+kuwait = Country("Kuwait", "KW")
 
-arabic_countries = [saudi_arabia, jordan, egypt]
+arabic_countries = [saudi_arabia, egypt, morocco, jordan, algeria, kuwait]
