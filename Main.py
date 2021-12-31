@@ -3,6 +3,7 @@ import pandas as pd
 import numpy
 import csv
 from Country import *
+import argparse
 
 def write_csv_file(file_name, array):
     with open(file_name, "w+") as my_csv:
@@ -38,6 +39,11 @@ def load_topics_list():
 
     return topics_list
 
+arg_parser = argparse.ArgumentParser(description='Get Search Intreset Over Time from Google Trends')
+arg_parser.add_argument("-t", "--timeframe", help="Timeframe to run this searh for")
+args = arg_parser.parse_args()
+time_frame = args.timeframe or 'today 3-m'
+
 topics_list = load_topics_list()
 
 # 1 raw for the header & one row for the total
@@ -52,7 +58,7 @@ for topic in topics_list:
     # sum of all countries average scores
     score_sum = 0
     for country in arabic_countries:
-        result = get_search_interest_over_time([topic], country.iso2)
+        result = get_search_interest_over_time([topic], country.iso2, time_frame)
         score_sum = score_sum + result
 
         if countries_rows < len(out):
