@@ -134,3 +134,6 @@ output.csv
 
 # mac files
 .DS_Store
+
+#idea
+.idea/
