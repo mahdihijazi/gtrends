@@ -1,8 +1,8 @@
+import json
 import pandas as pd
 import numpy
 import csv
 from Country import *
-
 
 def write_csv_file(file_name, array):
     with open(file_name, "w+") as my_csv:
@@ -29,9 +29,16 @@ def get_search_interest_over_time(keyword_list, country_iso2, timeframe='today 3
 def gtrends_hyper_link(geo, query, cell_value):
     return f"=HYPERLINK(https://trends.google.com/trends/explore?geo={geo}&q={query}, {cell_value})"
 
+def load_topics_list():
+    file = open('topics.json')
+    json_array = json.load(file)
+    topics_list = []
+    for item in json_array:
+        topics_list.append(item)
 
-topics_list = ["صناديق الريت", "صناديق المؤشرات المتداولة", "etf", "ناسداك"]
+    return topics_list
 
+topics_list = load_topics_list()
 
 # 1 raw for the header & one row for the total
 lastRow = len(arabic_countries) + 2
